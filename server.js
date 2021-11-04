@@ -26,8 +26,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, '/public')));
 
 app.get('/', (req, res) => {
+  req.logout();
   res.render('index');
 });
+
 
 app.use('/auth', require('./routes/auth.routes'));
 app.use('/user', require('./routes/user.routes'));
